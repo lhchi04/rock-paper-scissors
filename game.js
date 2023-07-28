@@ -8,16 +8,22 @@ function getComputerChoice() {
 
 const computerChoice = getComputerChoice();
 console.log(computerChoice);
-let playerChoice = prompt('Enter your choice:');
-playerChoice = playerChoice.toLowerCase();
-function play(computerChoice, playerChoice) {
+
+function play(computerChoice, playerChoice) {  
+  playerChoice = playerChoice.toLowerCase();
   if (computerChoice === 'rock') {
     if (playerChoice === 'rock') {
       return 'draw';
     }
     else {
-      computerScore++;
-      return 'computer wins'; 
+      if (playerChoice === 'paper') {
+        playerScore++;
+        return 'you win';
+      }
+      else {
+        computerScore++;
+        return 'computer wins'; 
+      }
     }
   }
   else if (computerChoice === 'paper') {
@@ -25,8 +31,14 @@ function play(computerChoice, playerChoice) {
       return 'draw';
     }
     else {
-      playerScore++;
-      return 'you win';
+      if (playerChoice === 'rock') {
+        computerScore++;
+        return 'computer wins';
+      }
+      else {
+        playerScore++;
+        return 'you win';
+      }
     }
   }
   else {
@@ -43,14 +55,11 @@ function play(computerChoice, playerChoice) {
     }
   }
 }
-console.log(play(computerChoice,playerChoice));
 
-
-for (let i = 0; i < 5; i++) {
-  let computerSelection = getComputerChoice();
-  let playerSelection = prompt('Enter your choice:');
-  playerSelection = playerSelection.toLowerCase();
-  console.log(play(computerSelection, playerSelection));
-}
-
-console.log(playerScore);
+const result = document.querySelector('#results');
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', e => {
+    result.textContent = `${play(computerChoice, e.target.textContent)}`;
+  })
+});
