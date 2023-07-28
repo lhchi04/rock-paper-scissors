@@ -56,12 +56,19 @@ function play(computerChoice, playerChoice) {
 
 const result = document.querySelector('#results');
 const buttons = document.querySelectorAll('button');
+const player = document.querySelector('.player');
+player.textContent = `Your scores: ${playerScore}`;
+const computer = document.querySelector('.computer');
+computer.textContent = `Computer scores: ${computerScore}`;
+
 buttons.forEach((button) => {
   button.addEventListener('click', e => {
     computerChoice = getComputerChoice();
     console.log(computerChoice);
     if (playerScore < 5 && computerScore < 5) {
       result.textContent = `${play(computerChoice, e.target.textContent)}`;
+      player.textContent = `Your scores: ${playerScore}`;
+      computer.textContent = `Computer scores: ${computerScore}`;
     }
     else {
       if (playerScore === 5) {
