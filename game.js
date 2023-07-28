@@ -1,13 +1,11 @@
 let playerScore = 0;
 let computerScore = 0;
+let computerChoice;
 
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
   return choices[Math.floor(Math.random()*3)];
 }
-
-const computerChoice = getComputerChoice();
-console.log(computerChoice);
 
 function play(computerChoice, playerChoice) {  
   playerChoice = playerChoice.toLowerCase();
@@ -60,6 +58,19 @@ const result = document.querySelector('#results');
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   button.addEventListener('click', e => {
-    result.textContent = `${play(computerChoice, e.target.textContent)}`;
+    computerChoice = getComputerChoice();
+    console.log(computerChoice);
+    if (playerScore < 5 && computerScore < 5) {
+      result.textContent = `${play(computerChoice, e.target.textContent)}`;
+    }
+    else {
+      if (playerScore === 5) {
+        result.textContent = 'You win 5 rounds!';
+      }
+      else {
+        result.textContent = 'You lose...'
+      }
+    }
   })
 });
+
