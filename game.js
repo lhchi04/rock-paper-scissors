@@ -54,8 +54,11 @@ function play(computerChoice, playerChoice) {
   }
 }
 
-const result = document.querySelector('#results');
+const result = document.querySelector('.results');
+const finalResult = document.querySelector('.play-section');
 const buttons = document.querySelectorAll('button');
+const playerChoices = document.querySelector('.player-choice');
+const computerChoices = document.querySelector('.computer-choice');
 const player = document.querySelector('.player');
 player.textContent = `Your scores: ${playerScore}`;
 const computer = document.querySelector('.computer');
@@ -63,21 +66,32 @@ computer.textContent = `Computer scores: ${computerScore}`;
 
 buttons.forEach((button) => {
   button.addEventListener('click', e => {
+    button.classList.add('playing');
     computerChoice = getComputerChoice();
     console.log(computerChoice);
     if (playerScore < 5 && computerScore < 5) {
       result.textContent = `${play(computerChoice, e.target.textContent)}`;
+      playerChoices.textContent = `${e.target.textContent}`;
+      computerChoices.textContent = `${computerChoice}`;
       player.textContent = `Your scores: ${playerScore}`;
       computer.textContent = `Computer scores: ${computerScore}`;
-    }
-    else {
+
       if (playerScore === 5) {
-        result.textContent = 'You win 5 rounds!';
+        finalResult.textContent = 'Hmm you are lucky...';
+        finalResult.style.cssText = "color: darkgreen; font-size: 40px; text-align: center;";
       }
-      else {
-        result.textContent = 'You lose...'
+      else if (computerScore === 5) {
+        finalResult.textContent = 'Oops you lose...';
+        finalResult.style.cssText = "color: #D22B2B; font-size: 40px; text-align: center;";
       }
     }
   })
 });
+
+function stopTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+}
+
+buttons.forEach(button => button.addEventListener('transitionend',stopTransition));
 

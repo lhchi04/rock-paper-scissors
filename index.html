@@ -7,17 +7,34 @@
     <script src="game.js" defer></script>
   </head>
   <body>
-    <div id="choices">
-      <button class="rock">Rock</button>
-      <button class="paper">Paper</button>
-      <button class="scissors">Scissors</button>
-    </div>
+    <section id="main">
+      <h1>Rock Paper Scissors</h1>
+      <h2>Win or <em>Die</em></h2>
 
-    <div id="results"></div>
+      <div id="game">
+        <div>
+          <p class="player-choice"></p>
+          <img src="dog.png">
+        </div>
+        <div class="play-section">
+          <div class="choices">
+            <button>Rock</button>
+            <button>Paper</button>
+            <button>Scissors</button>
+          </div>
+          <div class="results"></div>
+        </div>
+        <div>
+          <p class="computer-choice"></p>
+          <img src="moon.png">
+        </div>
+      </div>
 
-    <div id="scores">
-      <div class="player"></div>
-      <div class="computer"></div>
-    </div>
+      <div id="scores">
+        <div class="player"></div>
+        <div class="computer"></div>
+      </div>
+    </section>
+    
   </body>
 </html>
