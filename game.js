@@ -66,7 +66,6 @@ computer.textContent = `Computer scores: ${computerScore}`;
 
 buttons.forEach((button) => {
   button.addEventListener('click', e => {
-    button.classList.add('playing');
     computerChoice = getComputerChoice();
     console.log(computerChoice);
     if (playerScore < 5 && computerScore < 5) {
@@ -87,11 +86,4 @@ buttons.forEach((button) => {
     }
   })
 });
-
-function stopTransition(e) {
-  if (e.propertyName !== 'transform') return;
-  this.classList.remove('playing');
-}
-
-buttons.forEach(button => button.addEventListener('transitionend',stopTransition));
 
