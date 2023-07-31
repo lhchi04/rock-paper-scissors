@@ -5,7 +5,7 @@ Rock-Paper-Scissors game.
 
 ## Usage
 
-[Live Demo]()
+[Live Demo](https://lhchi04.github.io/rock-paper-scissors/)
 
 ## Credits
 
